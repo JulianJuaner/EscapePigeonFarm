@@ -1,0 +1,38 @@
+<!--history.wxml-->
+<view>
+  <scroll-view class="topmad" scroll-y>
+    <view class="userinfo">
+      <view class ="bgi"> 
+        <view class="view-back" bindtap='getBack'>
+          <view class="view-icon"></view>
+          <view class="view-text">看够了</view>
+        </view>
+        <view class="userinfo index-title">我的历史记录</view>
+      </view> 
+    </view>
+    <view style="height:50rpx;"></view>
+    <view>
+      <view wx:for="{{userhistory}}" wx:key="id_"
+      data-to-id="{{item.id_}}" 
+      class="carditem" hover-class="carditem-hover" bindtap='goTospcTeam'>
+        <view class="cardtitle">{{item.theme}}</view>
+        <view class ="divline"></view>
+        <view class="card">
+          <view class="maincontent">
+            <view class="maincontent">时间：</view>
+            <view class="maincontent">地点：</view>
+          </view>
+          <view>
+            <view class="maintext">{{item.time}}</view>
+            <view class="maintext">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    
+  </scroll-view>
+   <view>
+      <view bindtap="gotoActivityPage" hover-class="btn-hover"class="bottom-button">开启一个活动</view>
+    </view>
+</view>

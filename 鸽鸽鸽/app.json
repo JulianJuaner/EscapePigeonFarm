@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/history/history",
+    "pages/about/about"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#37a4be",
+    "navigationBarTitleText": "欢迎来到养鸽场",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  }
+}

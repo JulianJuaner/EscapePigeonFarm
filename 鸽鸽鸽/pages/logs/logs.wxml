@@ -1,0 +1,61 @@
+<!--logs.wxml-->
+<scroll-view class="topmad" scroll-y>
+  <view class="img" bindtap='bindChooseLocation'></view>
+      <!--<text>locationX: {{locationX}}</text>-->
+      <!--<text>locationY: {{locationY}}</text>--> 
+  <view class="map1">
+    <map id="map"
+      longitude="{{locationY}}" 
+      latitude="{{locationX}}" 
+      scale="19" 
+      controls="{{controls}}" 
+      bindcontroltap="controltap" 
+      markers="{{markers}}" 
+      bindmarkertap="markertap" 
+      polyline="{{polyline}}" 
+      show-location 
+      style="width: 750rpx; height: 500rpx;"
+      class = "sticker"
+      >
+    </map>
+    </view>
+    
+  <view>
+        <view class="weui-cell__hd form_title">集合地点：</view>
+        <view class="map_item">{{address}}：{{detailadd}}</view>
+        <view class="weui-cells">
+          <view class="weui-cell">
+            <view class="weui-cell__hd form_item_title">填写主题：</view>
+            <input class="weui-cell__bd form_item" 
+            type='text' placeholder='请输入一个主题'
+            bindinput='replaceInput' value='{{theme}}'/>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd form_item_title">选择日期：</view>
+            <picker class='pickers' mode="date" value="{{currentdate}}" start="{{currentdate}}"  bindchange="bindDateChange">
+              <view class="weui-cell__bd form_item">
+                {{date}}
+              </view>
+            </picker>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd form_item_title">选择时间：</view>
+            <picker class='pickers' mode="time" value="{{time}}" bindchange="bindTimeChange">
+              <view class="weui-cell__bd form_item">
+                {{time}}
+              </view>
+            </picker>
+          </view>
+
+          <view class="weui-cell">
+            <view class="weui-cell__hd form_item_title">惩罚方式：</view>
+            <!--<block wx:if{{punish=='none'}}></block>-->
+            <view wx:for='{{state}}' class="selecter">
+              <button class="{{item.id}} selecter_item newbutton" id="{{item.num}}" bindtap='handlePunish' hover-class=''>{{item.name}}</button>
+            </view>
+          </view>
+      </view>
+      </view>
+</scroll-view>
+
+  <view bindtap="submitForm" hover-class="btn-hover" class="submitbtn bottom-button">开启新的活动!</view>

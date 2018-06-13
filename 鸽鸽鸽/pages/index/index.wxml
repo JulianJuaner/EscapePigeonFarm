@@ -1,0 +1,45 @@
+<!--index.wxml-->
+<view>
+  <scroll-view class="topmad" scroll-y>
+    <view class="userinfo">
+     
+      <view class ="bgi"> 
+        <image bindtap="getInfo" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <view class="userinfo userinfo-nickname" style="font-size : 14px;">我的信誉值：{{userInfo.reputation}}</view>
+        <view class="userinfo index-title">要打卡的活动</view>
+        </view> 
+
+    </view>
+    <view style="height:50rpx;"></view>
+    <view>
+      <view wx:for="{{trueuserteams}}" wx:key="id_" data-to-id="{{item.id_}}" class="carditem" bindtap='goTospcTeam'hover-class="carditem-hover">
+        <view class="cardtitle">{{item.theme}}</view>
+        <view class ="divline"></view>
+        <view class="card">
+          <view class="maincontent">
+            <view class="maincontent">时间：</view>
+            <view class="maincontent">地点：</view>
+            <view class="maincontent">惩罚方式：</view>
+          </view>
+          <view>
+            <view class="maintext">{{item.time}}</view>
+            <view class="maintext">{{item.name}}</view>
+            <view wx:if="{{item.punish==2}}"class="maintext">{{item.money}}元红包</view>
+            <view wx:elif="{{item.punish==1}}"class="maintext">无信誉值</view>
+            <view wx:elif="{{item.punish==3}}"class="maintext">你猜猜看？</view>
+          </view>
+          
+        </view>
+        <view class="remaining">我还有{{item.remainD}}天{{item.remainH}}小时{{item.remainM}}分，距离{{item.distance}}公里</view>
+      </view>
+    </view>
+
+    <view class="view-history" bindtap='getHistory'>
+      <view class="view-icon"></view>
+      <view class="view-text">历史记录</view>
+    </view>
+  </scroll-view>
+   <view>
+      <view bindtap="gotoActivityPage" hover-class="btn-hover" class="bottom-button">开启一个活动</view>
+    </view>
+</view>

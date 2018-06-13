@@ -1,0 +1,50 @@
+<scroll-view scroll-y class = "topmad">
+    <image class='top' src='../../images/road.jpg' mode="widthFix"> </image>
+  <view class = 'white'>
+    <image class='icon'  hover-class="img-hover"bindtap='home' src='../../images/home.png'></image>
+    <image class='icon' hover-class="img-hover"wx:if="{{userid.tosSting()==truemember[0].id}}" bindtap='cancel' src='../../images/delete.png'></image> 
+    <image class='icon' hover-class="img-hover"bindtap='openlocation' src='../../images/location.png'></image> 
+    </view>
+  <view class="divLine1"></view>
+  <view class='carditem' id='basic'>
+    <view class='tittle text'>{{team.theme}}</view>
+    <view class="divLine2"></view>
+    <view><text id='text2' class='text'>{{team.time}}</text></view>
+    <view class='text'>地点：{{team.name}}：{{team.address}}</view>
+    <view class='text'>不做鸽鸽 {{punch}} 只 / {{member.length}} 只</view>
+    <view class='text'wx:if="{{team.punish===1}}"> 鸽鸽惩罚：没信誉</view>
+    <view class='text'wx:if="{{team.punish===2}}"> 鸽鸽惩罚：拿钱钱</view>
+    <view class='text'wx:if="{{team.punish===3}}"> 鸽鸽惩罚：咕咕歌</view>
+  </view>
+  <view class="carditem">
+    <view wx:if="{{success===0}}">    <!-- notpunch -->
+      <view wx:if="{{toofar==0}}"class='text'>还有 <text class='tittle'>{{distance}} m</text> 抵达</view>
+      <view wx:if="{{toofar==1}}"class='text'><text class='tittle'>远如西天取经</text></view>
+      <view class='text'>还有 <text class='tittle'>{{Time.remainD}}</text> 天 <text class='tittle'>{{Time.remainH}}</text> 小时<text class='tittle'> {{Time.remainM}}</text> 分钟 集合</view>
+    </view>
+    <view wx:if="{{success==1}}">
+      <view class='text tittle'>活动已过期！</view>
+    </view>
+  </view>
+  <view class="carditem">
+    <view class ='text tittle'>鸽鸽成员</view>
+    <view class="divLine2"></view>
+    <view class='text card' wx:for="{{member}}">
+        <view class="card">
+        <image class='userinfo-avatar' src='{{item.avatarUrl}}'></image>
+          <view class="maincontent">
+            <view class="maincontent">{{item.nickname}} 信誉值{{item.reputation}}</view>
+          </view>
+          <view>
+            <view class="maintext" wx:if="{{inpunch}}">已抵达</view>
+          </view>
+        </view>
+      </view>
+  </view>
+</scroll-view>
+
+  <view class='button bottom-button' hover-class="btn-hover" bindtap='punch' wx:if="{{!success&&memberin&&!inpunch}}">鸽鸽抵达</view>
+  <view class='button bottom-button' hover-class="btn-hover" bindtap='join' wx:elif="{{!memberin&&!success}}">加入鸽鸽</view>
+  <view hover-class="btn-hover" class='button bottom-button'wx:elif="{{success==1}}">活动已过期</view>
+  <view hover-class="btn-hover" class='button bottom-button'wx:else>你已签到</view>
+
